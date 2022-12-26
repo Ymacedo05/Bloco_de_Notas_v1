@@ -40,11 +40,17 @@ if(localStorage.getItem("notas")) {
 
 function aniScroll() {
 
-    let barra = window.scrollY
+    let barra = window.scrollY + (window.innerHeight/4)*3
     let alvos = document.querySelectorAll(".nota") 
 
+    console.log(barra)
+
     alvos.forEach( (elem) => {
-        
+        if(barra > elem.offsetTop) {
+            elem.classList.add("active")
+        }else {
+            elem.classList.remove("active")
+        }
     })
 
 }

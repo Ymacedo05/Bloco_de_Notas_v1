@@ -1,3 +1,14 @@
+@keyframes ani {
+    0%{
+        transform: translateY(80px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 :root{
     --corA:#00A9A5 ;
     --corB: #0B5351;
@@ -102,7 +113,13 @@ main div.nota {
     margin-bottom: 10px;
     border-radius: 15px;
     padding:20px;
+    opacity: 0;
 
+}
+
+main div.nota.active {
+    animation: ani 0.5s;
+    opacity: 1;
 }
 
 main div.nota h3 {
