@@ -56,6 +56,7 @@ function aniScroll() {
 }
 
 window.document.addEventListener("scroll", aniScroll)
+aniScroll()
 
 
 // =========  Config Botão subir ======
