@@ -23,27 +23,48 @@ if(localStorage.getItem("notas")) {
 
         let h3 = document.createElement("h3")
         let p = document.createElement("p")
+        let div = document.createElement("div")
+        div.classList.add('sub')
+
+        let opcao1 = document.createElement("i")
+        opcao1.classList.add("fa-solid")
+        opcao1.classList.add("fa-trash-can")
+        opcao1.classList.add("op1")
+  
+
+        let opcao2 = document.createElement("i")
+        opcao2.classList.add("fa-solid")
+        opcao2.classList.add("fa-pencil")
+        opcao2.classList.add("op2")
         
 
         h3.textContent = info[cot].titulo
         p.textContent = info[cot].conteudo
 
+        div.appendChild(opcao1)
+        div.appendChild(opcao2)
+
         novo.appendChild(h3)
         novo.appendChild(p)
-        
-
+        novo.appendChild(div)
         main.appendChild(novo)
-        
+
+        let alvos = document.querySelectorAll(".op1")
+        console.log(alvos)
+
+        alvos.forEach( (e,i) => {
+         e.addEventListener("click", () => excluir(i))
+        })
+
     }
 }
 // ======== ANIMAÇÃO NOTAS ==========
 
-function aniScroll() {
+/*function aniScroll() {
 
     let barra = window.scrollY + (window.innerHeight/4)*3
     let alvos = document.querySelectorAll(".nota") 
 
-    console.log(barra)
 
     alvos.forEach( (elem) => {
         if(barra > elem.offsetTop) {
@@ -57,7 +78,7 @@ function aniScroll() {
 
 window.document.addEventListener("scroll", aniScroll)
 aniScroll()
-
+*/
 
 // =========  Config Botão subir ======
 function subir() {
@@ -101,7 +122,6 @@ function salvar() {
     let titulo = document.getElementById("titulo").value
     let conteudo = document.getElementById("textarea").value
 
-    console.log(titulo, conteudo)
 
     //Se os o titulo não for preechido a nota não será salva.
 
@@ -112,9 +132,25 @@ function salvar() {
         let main = document.getElementById("main")
         let novo = document.createElement("div")
         novo.classList.add("nota")
+        novo.addEventListener("click", () => bbtn(novo))
 
         let h3 = document.createElement("h3")
         let p = document.createElement("p")
+        let div = document.createElement("div")
+        div.classList.add('sub')
+
+        let opcao1 = document.createElement("i")
+        opcao1.classList.add("fa-solid")
+        opcao1.classList.add("fa-trash-can")
+        opcao1.classList.add("op1")
+  
+
+        let opcao2 = document.createElement("i")
+        opcao2.classList.add("fa-solid")
+        opcao2.classList.add("fa-pencil")
+        opcao2.classList.add("op2")
+        
+        
 
         // =====  Armazenamento de informações =====
 
@@ -130,21 +166,55 @@ function salvar() {
         h3.textContent = titulo
         p.textContent = conteudo
 
+        div.appendChild(opcao1)
+        div.appendChild(opcao2)
+
         novo.appendChild(h3)
         novo.appendChild(p)
+        novo.appendChild(div)
         main.appendChild(novo)
+        let alvos = document.querySelectorAll(".op1")
+        console.log(alvos)
+
+        alvos.forEach( (e,i) => {
+        e.addEventListener("click", () => excluir(i))
+        })
 
         fechar()
+        
     }
 
-    
-
-    
-    
-
-    
-
-    
-
-
 }
+
+
+
+
+function excluir(i) {
+    console.log(info)
+
+    info.splice(i,1)
+    localStorage.setItem("notas",JSON.stringify(info))
+
+    let nota = document.querySelectorAll(".nota")
+    nota[i].style.display = "none"
+}
+
+
+function toggleNota() {
+
+    // Toggle botão de opções das notas
+    let alvos = document.querySelectorAll(".nota")
+    console.log(alvos)
+
+    alvos.forEach( (e,i) => {
+            alvos[i].addEventListener("click", () => bbtn(e,i))
+    })
+
+    
+}
+
+function bbtn(e,i) {
+        e.classList.toggle("active")
+}
+
+toggleNota()
