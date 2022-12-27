@@ -78,6 +78,7 @@ main #btn, main #subir{
     align-items: center;
     cursor: pointer;
     border: 0px;
+    z-index: 1000;
 }
 
 main #btn h3, main #subir h3{
