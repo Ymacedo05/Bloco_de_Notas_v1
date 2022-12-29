@@ -139,6 +139,35 @@ function salvar() {
         let div = document.createElement("div")
         div.classList.add('sub')
 
+        let p1 = document.createElement("div")
+        p1.classList.add('p1')
+        let p2 = document.createElement("div")
+        p2.classList.add('p2')
+        let miniInfo =  document.createElement("div")
+        miniInfo.classList.add("miniInfo")
+
+        miniInfo.appendChild(p1)
+        miniInfo.appendChild(p2)
+
+        let tempo = new Date()
+
+        let dia = tempo.getDate()
+        let mes = tempo.getMonth() + 1
+        let ano = tempo.getFullYear()
+        let data = dia+"-"+mes+"-"+ano
+
+        let hora = tempo.getHours()
+        let minutos = tempo.getMinutes()
+        let horario = hora+":"+minutos
+
+        p1.textContent = data
+        p2.textContent = horario
+
+
+
+
+
+
         let opcao1 = document.createElement("i")
         opcao1.classList.add("fa-solid")
         opcao1.classList.add("fa-trash-can")
@@ -172,7 +201,9 @@ function salvar() {
         novo.appendChild(h3)
         novo.appendChild(p)
         novo.appendChild(div)
+        novo.appendChild(miniInfo)
         main.appendChild(novo)
+
         let alvos = document.querySelectorAll(".op1")
         console.log(alvos)
 

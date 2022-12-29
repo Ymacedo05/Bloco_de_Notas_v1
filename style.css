@@ -110,10 +110,10 @@ main #btn {
 main div.nota {
     background-color: var(--corB);
     width: 95%;
-    min-height: 300px;
+    min-height: 120px;
     margin-bottom: 15px;
     border-radius: 15px;
-    padding:20px;
+    padding:15px 30px;
     position: relative;
     word-break: break-all;
     box-shadow: 0px 0px 0px 5px black;
@@ -132,7 +132,7 @@ main div.nota h3 {
     text-align: center;
     margin-bottom: 15px;
     color: var(--corA);
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-weight: 700;
     text-transform: uppercase;
     font-family: sans-serif;
@@ -143,29 +143,48 @@ main div.nota p {
     text-align: left;
     color: black;
     font-family: sans-serif;
+    padding-bottom: 10px;
 
 }
 
 main div.nota div.sub{
-    background-color: #00060a;
-    width: 100px;
-    height: 250px;
+    background-color: #00060ad4;
+    width: 80px;
+    height: 100px;
     position: absolute;
-    right: 5%;
+    right: 10%;
     top: 10%;
-    border-radius: 40px;
+    border-radius: 20px;
     display: none;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    z-index: 15000;
 }
 main div.nota.active div.sub{
     display: flex;
 }
 
 main div.nota div.sub i{
-    font-size: 25px;
+    font-size: 18px;
     color: var(--corA);
+}
+
+main div.nota .miniInfo{
+    display: flex;
+    justify-content: space-around;
+    border-top: 0.5px solid black;
+    
+}
+main div.nota .miniInfo .p1{
+    left: 4px;
+    top: 20%;
+    font-weight: 700;
+}
+main div.nota .miniInfo .p2{
+    right: 4px;
+    top: 20px;
+    font-weight: 700;
 }
 
 
@@ -190,8 +209,9 @@ main #modal-prot.active{
 
 main .modal{
     background-color: var(--corC);
-    width: 80vw;
-    height: 90vh;
+    width: 100vw;
+    max-width: 600px;
+    height: 100vh;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
@@ -209,11 +229,12 @@ main .modal #titulo{
     border: 0;
     border-bottom: 0.5px solid var(--corA);
     color: var(--corD);
+    padding-left: 60px;
     
 }
 
 main .modal #textarea {
-    height: 87%;
+    height: 100%;
     background-color: var(--corC);
     border: 0px;
     padding: 10px 12px;
@@ -223,29 +244,29 @@ main .modal #textarea {
 }
 
 main .modal button{
-    height: 60px;
-    width: 60px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     background-color: black;
     color: var(--corA);
     font-weight: 800;
-    font-size: 0.8em;
+    font-size: 1em;
     position: absolute;
     cursor: pointer;
-    border: 5px solid var(--corA);
-    box-shadow: 0px 0px 0px 4px black;
     font-family: sans-serif;
 }
 
 main .modal #salvar {
-    top: -20px;
-    left: -20px;
+    top: 7px;
+    left: 10px;
+    transform: rotate(90deg);
 
 }
 
 main .modal #fechar {
     top: -20px;
     right: -20px;
+    display: none;
 
 }
 
