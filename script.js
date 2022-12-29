@@ -36,6 +36,19 @@ if(localStorage.getItem("notas")) {
         opcao2.classList.add("fa-solid")
         opcao2.classList.add("fa-pencil")
         opcao2.classList.add("op2")
+
+        let p1 = document.createElement("div")
+        p1.classList.add('p1')
+        let p2 = document.createElement("div")
+        p2.classList.add('p2')
+        let miniInfo =  document.createElement("div")
+        miniInfo.classList.add("miniInfo")
+
+        miniInfo.appendChild(p1)
+        miniInfo.appendChild(p2)
+
+        p1.textContent = info[cot].data
+        p2.textContent = info[cot].hora
         
 
         h3.textContent = info[cot].titulo
@@ -47,6 +60,7 @@ if(localStorage.getItem("notas")) {
         novo.appendChild(h3)
         novo.appendChild(p)
         novo.appendChild(div)
+        novo.appendChild(miniInfo)
         main.appendChild(novo)
 
         let alvos = document.querySelectorAll(".op1")
@@ -186,6 +200,8 @@ function salvar() {
         info.push({
             "titulo": titulo,
             "conteudo": conteudo,
+            "data":data,
+            "hora":horario
         })
 
         localStorage.setItem("notas",JSON.stringify(info))
