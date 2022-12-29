@@ -208,7 +208,7 @@ main #modal-prot.active{
 }
 
 main .modal{
-    background-color: var(--corC);
+    background-color: var(--corB);
     width: 100vw;
     max-width: 600px;
     height: 100vh;
@@ -223,23 +223,24 @@ main .modal{
 }
 main .modal #titulo{
     font-size: 1.2em;
+    font-weight: 800;
     text-align: center;
     height: 60px;
-    background-color: var(--corC);
+    background-color: var(--corB);
     border: 0;
-    border-bottom: 0.5px solid var(--corA);
-    color: var(--corD);
+    border-bottom: 0.5px solid black;
+    color: var(--corA);
     padding-left: 60px;
     
 }
 
 main .modal #textarea {
     height: 100%;
-    background-color: var(--corC);
+    background-color: var(--corB);
     border: 0px;
     padding: 10px 12px;
     font-size: 1em;
-    color: var(--corA);
+    color: black;
 
 }
 
