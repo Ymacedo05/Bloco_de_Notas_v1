@@ -5,7 +5,10 @@ let x = document.getElementById("fechar")
 x.addEventListener("click", fechar)
 
 let v = document.getElementById("salvar")
-v.addEventListener("click", salvar)
+v.addEventListener("click", () => salvar())
+
+let edt = document.getElementById("editar")
+edt.addEventListener("click", () => editar2())
 
 let modal = document.getElementById("modal-prot")
 
@@ -22,7 +25,9 @@ if(localStorage.getItem("notas")) {
         novo.classList.add("nota")
 
         let h3 = document.createElement("h3")
+        h3.classList.add('h3')
         let p = document.createElement("p")
+        p.classList.add('p')
         let div = document.createElement("div")
         div.classList.add('sub')
 
@@ -63,14 +68,17 @@ if(localStorage.getItem("notas")) {
         novo.appendChild(miniInfo)
         main.appendChild(novo)
 
-        let alvos = document.querySelectorAll(".op1")
-        console.log(alvos)
-
-        alvos.forEach( (e,i) => {
-         e.addEventListener("click", () => excluir(i))
-        })
-
     }
+
+    let alvos = document.querySelectorAll(".op1")
+    alvos.forEach( (e,i) => {
+        e.addEventListener("click", () => excluir(i))
+    })
+
+    let alvos2 = document.querySelectorAll(".op2")
+    alvos2.forEach( (e,i) => {
+        alvos2[i].addEventListener("click", () => editar1(e,i))
+    })
 }
 // ======== ANIMAÇÃO NOTAS ==========
 
@@ -119,8 +127,8 @@ subir()
 
 
 function abrirNota() {
-    document.getElementById("titulo").value = ''
-    document.getElementById("textarea").value = ''
+    document.getElementById("titulo").value = ""
+    document.getElementById("textarea").value = ""
     modal.classList.add("active")     
 }
 
@@ -128,14 +136,69 @@ function fechar() {
     modal.classList.remove("active")
 }
 
+let infoEditar = null
+
+function editar1(e,i) {
+    document.getElementById("titulo").value = info[i].titulo
+    document.getElementById("textarea").value = info[i].conteudo
+    modal.classList.add("active") 
+
+    v.style.display = 'none'
+    edt.style.display = "block"
+
+    infoEditar = i
+   
+}
+
+
+function editar2() {
+    let titulo = document.getElementById("titulo").value 
+    let conteudo = document.getElementById("textarea").value 
+
+    let tempo = new Date()
+    let dia = tempo.getDate()
+    let mes = tempo.getMonth() + 1
+    let ano = tempo.getFullYear()
+    let data = dia+"-"+mes+"-"+ano
+
+    let hora = tempo.getHours()
+    let minutos = tempo.getMinutes()
+    let horario = hora+":"+minutos
+
+
+    info[infoEditar].titulo = titulo
+    info[infoEditar].conteudo = conteudo
+    info[infoEditar].data = data
+    info[infoEditar].hora = horario
     
 
-function salvar() {
+    localStorage.setItem("notas", JSON.stringify(info))
+
+    let h3 = document.querySelectorAll(".h3")
+    let p = document.querySelectorAll(".p")
+    let p1 = document.querySelectorAll(".p1")
+    let p2 = document.querySelectorAll(".p2")
+
+
+    h3[infoEditar].textContent = info[infoEditar].titulo
+    p[infoEditar].textContent = info[infoEditar].conteudo
+    p1[infoEditar].textContent = info[infoEditar].data
+    p2[infoEditar].textContent = info[infoEditar].hora
+
+
+    fechar()
+}
+
+    
+
+function salvar(i = 0) {
        
 
     let titulo = document.getElementById("titulo").value
     let conteudo = document.getElementById("textarea").value
-
+    
+    v.style.display = 'block'
+    edt.style.display = "none"
 
     //Se os o titulo não for preechido a nota não será salva.
 
@@ -149,7 +212,9 @@ function salvar() {
         novo.addEventListener("click", () => bbtn(novo))
 
         let h3 = document.createElement("h3")
+        h3.classList.add('h3')
         let p = document.createElement("p")
+        p.classList.add('p')
         let div = document.createElement("div")
         div.classList.add('sub')
 
@@ -221,7 +286,6 @@ function salvar() {
         main.appendChild(novo)
 
         let alvos = document.querySelectorAll(".op1")
-        console.log(alvos)
 
         alvos.forEach( (e,i) => {
         e.addEventListener("click", () => excluir(i))
@@ -237,7 +301,6 @@ function salvar() {
 
 
 function excluir(i) {
-    console.log(info)
 
     info.splice(i,1)
     localStorage.setItem("notas",JSON.stringify(info))
@@ -251,7 +314,6 @@ function toggleNota() {
 
     // Toggle botão de opções das notas
     let alvos = document.querySelectorAll(".nota")
-    console.log(alvos)
 
     alvos.forEach( (e,i) => {
             alvos[i].addEventListener("click", () => bbtn(e,i))

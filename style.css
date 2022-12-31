@@ -264,6 +264,14 @@ main .modal #salvar {
 
 }
 
+main .modal #editar {
+    top: 7px;
+    left: 10px;
+    transform: rotate(90deg);
+    display: none;
+
+}
+
 main .modal #fechar {
     top: -20px;
     right: -20px;
