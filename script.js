@@ -129,7 +129,10 @@ subir()
 function abrirNota() {
     document.getElementById("titulo").value = ""
     document.getElementById("textarea").value = ""
-    modal.classList.add("active")     
+    modal.classList.add("active")
+    
+    v.style.display = 'block'
+    edt.style.display = "none"
 }
 
 function fechar() {
@@ -191,14 +194,12 @@ function editar2() {
 
     
 
-function salvar(i = 0) {
+function salvar() {
        
 
     let titulo = document.getElementById("titulo").value
     let conteudo = document.getElementById("textarea").value
     
-    v.style.display = 'block'
-    edt.style.display = "none"
 
     //Se os o titulo não for preechido a nota não será salva.
 
@@ -292,6 +293,11 @@ function salvar(i = 0) {
         })
 
         fechar()
+
+        let alvos2 = document.querySelectorAll(".op2")
+        alvos2.forEach( (e,i) => {
+            e.addEventListener("click", () => editar1(e,i))
+        })
         
     }
 
