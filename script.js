@@ -1,5 +1,6 @@
 //Muahahaha
 
+
 let btn = document.getElementById("btn")
 btn.addEventListener("click", abrirNota)
 
@@ -9,13 +10,17 @@ x.addEventListener("click", fechar)
 let v = document.getElementById("salvar")
 v.addEventListener("click", () => salvar())
 
+/*
 let edt = document.getElementById("editar")
 edt.addEventListener("click", () => editar2())
+*/
 
 let modal = document.getElementById("modal-prot")
 
 let info = []
 //Verifica informações no Server, atualiza os dados locais e criar os novos elementos html para tornar o conteudo visual.
+
+/*
 
 if(localStorage.getItem("notas")) {
     info = JSON.parse(localStorage.getItem("notas"))
@@ -72,59 +77,14 @@ if(localStorage.getItem("notas")) {
 
     }
 
-    let alvos = document.querySelectorAll(".op1")
-    alvos.forEach( (e,i) => {
-        e.addEventListener("click", () => excluir(i))
-    })
 
-    let alvos2 = document.querySelectorAll(".op2")
-    alvos2.forEach( (e,i) => {
-        alvos2[i].addEventListener("click", () => editar1(e,i))
-    })
-}
-// ======== ANIMAÇÃO NOTAS ==========
-
-/*function aniScroll() {
-
-    let barra = window.scrollY + (window.innerHeight/4)*3
-    let alvos = document.querySelectorAll(".nota") 
-
-
-    alvos.forEach( (elem) => {
-        if(barra > elem.offsetTop) {
-            elem.classList.add("active")
-        }else {
-            elem.classList.remove("active")
-        }
-    })
-
+    //- Atribuir as funções aos botões criados após o carregamento da pagina.
 }
 
-window.document.addEventListener("scroll", aniScroll)
-aniScroll()
 */
 
-// =========  Config Botão subir ======
-function subir() {
-
-    
-
-    setInterval( () => {
-        let barra = window.scrollY
-        let altura = window.innerHeight / 4
-        let btnSubir = document.getElementById('subir')
 
 
-        if(barra > altura && info.length > 3) {
-            btnSubir.classList.add("active")
-        } else {
-            btnSubir.classList.remove("active")
-        }
-    }, 1000)
-
-}
-
-subir()
 
 
 
@@ -133,65 +93,14 @@ function abrirNota() {
     document.getElementById("textarea").value = ""
     modal.classList.add("active")
     
+    /*
     v.style.display = 'block'
     edt.style.display = "none"
+    */
 }
 
 function fechar() {
     modal.classList.remove("active")
-}
-
-let infoEditar = null
-
-function editar1(e,i) {
-    document.getElementById("titulo").value = info[i].titulo
-    document.getElementById("textarea").value = info[i].conteudo
-    modal.classList.add("active") 
-
-    v.style.display = 'none'
-    edt.style.display = "block"
-
-    infoEditar = i
-   
-}
-
-
-function editar2() {
-    let titulo = document.getElementById("titulo").value 
-    let conteudo = document.getElementById("textarea").value 
-
-    let tempo = new Date()
-    let dia = tempo.getDate()
-    let mes = tempo.getMonth() + 1
-    let ano = tempo.getFullYear()
-    let data = dia+"-"+mes+"-"+ano
-
-    let hora = tempo.getHours()
-    let minutos = tempo.getMinutes()
-    let horario = hora+":"+minutos
-
-
-    info[infoEditar].titulo = titulo
-    info[infoEditar].conteudo = conteudo
-    info[infoEditar].data = data
-    info[infoEditar].hora = horario
-    
-
-    localStorage.setItem("notas", JSON.stringify(info))
-
-    let h3 = document.querySelectorAll(".h3")
-    let p = document.querySelectorAll(".p")
-    let p1 = document.querySelectorAll(".p1")
-    let p2 = document.querySelectorAll(".p2")
-
-
-    h3[infoEditar].textContent = info[infoEditar].titulo
-    p[infoEditar].textContent = info[infoEditar].conteudo
-    p1[infoEditar].textContent = info[infoEditar].data
-    p2[infoEditar].textContent = info[infoEditar].hora
-
-
-    fechar()
 }
 
     
@@ -288,18 +197,23 @@ function salvar() {
         novo.appendChild(miniInfo)
         main.appendChild(novo)
 
+        /*
         let alvos = document.querySelectorAll(".op1")
-
         alvos.forEach( (e,i) => {
         e.addEventListener("click", () => excluir(i))
         })
+        */
+        let posi = info.length - 1
+        opcao1.addEventListener("click", ex = ()=> excluir(posi))
 
-        fechar()
-
-        let alvos2 = document.querySelectorAll(".op2")
+        /*let alvos2 = document.querySelectorAll(".op2")
         alvos2.forEach( (e,i) => {
             e.addEventListener("click", () => editar1(e,i))
+            console.log(alvos2,e, i)
         })
+        */
+
+        fechar()
         
     }
 
@@ -307,15 +221,33 @@ function salvar() {
 
 
 
+function atualizar() {
+    
+    let alvos = document.querySelectorAll(".op1")
+    console.log(alvos)
 
-function excluir(i) {
+    alvos.forEach( (e) => {
+        e.removeEventListener("click", ex)
+    })
 
-    info.splice(i,1)
+
+
+}
+function excluir(posi) {
+
+    console.log(posi, info)
+    info.splice(posi,1)
     localStorage.setItem("notas",JSON.stringify(info))
 
     let nota = document.querySelectorAll(".nota")
-    nota[i].style.display = "none"
+    nota[posi].style.display = "none"
+
+    atualizar()
+
 }
+
+
+
 
 
 function toggleNota() {
@@ -335,3 +267,80 @@ function bbtn(e,i) {
 }
 
 toggleNota()
+
+
+let infoEditar = null
+function editar1(e,i) {
+    document.getElementById("titulo").value = info[i].titulo
+    document.getElementById("textarea").value = info[i].conteudo
+    modal.classList.add("active") 
+
+    v.style.display = 'none'
+    edt.style.display = "block"
+
+    infoEditar = i
+   
+}
+
+
+function editar2() {
+    let titulo = document.getElementById("titulo").value 
+    let conteudo = document.getElementById("textarea").value 
+
+    let tempo = new Date()
+    let dia = tempo.getDate()
+    let mes = tempo.getMonth() + 1
+    let ano = tempo.getFullYear()
+    let data = dia+"-"+mes+"-"+ano
+
+    let hora = tempo.getHours()
+    let minutos = tempo.getMinutes()
+    let horario = hora+":"+minutos
+
+
+    info[infoEditar].titulo = titulo
+    info[infoEditar].conteudo = conteudo
+    info[infoEditar].data = data
+    info[infoEditar].hora = horario
+    
+
+    localStorage.setItem("notas", JSON.stringify(info))
+
+    let h3 = document.querySelectorAll(".h3")
+    let p = document.querySelectorAll(".p")
+    let p1 = document.querySelectorAll(".p1")
+    let p2 = document.querySelectorAll(".p2")
+
+
+    h3[infoEditar].textContent = info[infoEditar].titulo
+    p[infoEditar].textContent = info[infoEditar].conteudo
+    p1[infoEditar].textContent = info[infoEditar].data
+    p2[infoEditar].textContent = info[infoEditar].hora
+
+
+    fechar()
+}
+
+
+
+// =========  Config Botão subir ======
+function subir() {
+
+    
+
+    setInterval( () => {
+        let barra = window.scrollY
+        let altura = window.innerHeight / 4
+        let btnSubir = document.getElementById('subir')
+
+
+        if(barra > altura && info.length > 3) {
+            btnSubir.classList.add("active")
+        } else {
+            btnSubir.classList.remove("active")
+        }
+    }, 1000)
+
+}
+
+subir()
