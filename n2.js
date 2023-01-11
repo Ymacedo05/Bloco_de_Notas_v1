@@ -5,7 +5,7 @@ btnAdd.addEventListener("click", abrirModal)
 
 
 
-let [dados] = recuperarStorage();
+let [dados] = JSON.parse(localStorage.getItem("key"));
 console.log(dados)
 
 
