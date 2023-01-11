@@ -6,7 +6,7 @@ btnAdd.addEventListener("click", abrirModal)
 
 function iniciar() {
    dados = recuperarStorage()
-   //criar(modo,titulo,conteudo,dat=0,hor=0)
+   
 
 
    for(let c =0; c<dados.length; c++) {
