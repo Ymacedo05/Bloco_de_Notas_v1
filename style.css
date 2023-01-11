@@ -63,6 +63,7 @@ main {
     margin-bottom: 13px;
     flex-wrap: wrap;
     text-align: center;
+    min-height: 66vh;
     
 }
 
@@ -105,6 +106,7 @@ main #btn h3 {
 }
 main #btn {
     background-color: rgba(0, 0, 0, 0.693);
+    border: 4px solid var(--corA);
 }
 
 /* ==========  ======*/
