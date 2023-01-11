@@ -1,12 +1,12 @@
-let ident = 0
-let dados = []
+let ident = 0;
+let dados = [];
 let btnAdd = document.getElementById("btn")
 btnAdd.addEventListener("click", abrirModal)
 
 
 
 function iniciar() {
-   dados = recuperarStorage()
+   dados = recuperarStorage();
    
 
 
