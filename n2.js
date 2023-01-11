@@ -5,7 +5,7 @@ btnAdd.addEventListener("click", abrirModal)
 
 
 
-function iniciar() {
+
    dados = recuperarStorage();
    
 
@@ -19,9 +19,7 @@ function iniciar() {
       criar("iniciar", dados[i].titulo,dados[i].conteudo,dados[i].data, dados[i].horario, dados[i].ident)
    })
    
-}
 
-iniciar()
 
 
 
