@@ -55,8 +55,8 @@ function criar(modo,titulo,conteudo,dat=0,hor=0, idd=0) {
       if(titulo != ''){
       
 
-         salvar.style.display = "none"
-         btnEditar.style.display = "block"
+         salvar.style.display = "block"
+         btnEditar.style.display = "none"
 
          let main = document.getElementById("main")
       
