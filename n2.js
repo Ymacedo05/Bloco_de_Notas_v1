@@ -1,19 +1,24 @@
-let ident = 0;
+let ident = 0
+let dados = []
 let btnAdd = document.getElementById("btn")
 btnAdd.addEventListener("click", abrirModal)
 
 
 
+function iniciar() {
+   dados = recuperarStorage()
+   
 
-let [dados] = JSON.parse(localStorage.getItem("key"));
-console.log(dados)
 
-
-  for(let c =0; c<dados.length; c++) {
+   for(let c =0; c<dados.length; c++) {
 
       criar("iniciar", dados[c].titulo,dados[c].conteudo,dados[c].data, dados[c].horario, dados[c].ident)
-  }
+   }
+   
+   
+}
 
+iniciar()
 
 
 
