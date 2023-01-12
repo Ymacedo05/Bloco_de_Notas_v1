@@ -3,18 +3,19 @@ let dados = []
 let btnAdd = document.getElementById("btn")
 btnAdd.addEventListener("click", abrirModal)
 
-/*
 
-function iniciar() {
+
+function iniciar(x) {
    dados = recuperarStorage()
    
-   if(dados.length > 0) {
+   if(dados != null) {
       for(let c =0; c<dados.length; c++) {
 
          criar("iniciar", dados[c].titulo,dados[c].conteudo,dados[c].data, dados[c].horario, dados[c].ident)
       }
    } else {
       console.log("Não foi necessário usar a função iniciar(): ", + dados)
+      dados = []
    }
    
    
@@ -22,24 +23,7 @@ function iniciar() {
 
 iniciar()
 
-*/
 
-function staart(n) {
-   dados = recuperarStorage()
-   console.log(dados)
-
-   if(dados.length > 0) {
-      for(let contar =0; contar<dados.length; contar++) {
-
-         criar("iniciar", dados[contar].titulo,dados[contar].conteudo,dados[contar].data, dados[contar].horario, dados[contar].ident)
-      }
-   } else {
-      console.log("Não foi necessário usar a função iniciar(): ", + dados)
-   }
-}
-
-
-staart(dados)
 
 function abrirModal(){
    let modal = document.getElementById("modal-prot") 
