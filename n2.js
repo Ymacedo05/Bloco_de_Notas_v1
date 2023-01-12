@@ -27,6 +27,15 @@ iniciar()
 function staart(n) {
    dados = recuperarStorage()
    console.log(dados)
+
+   if(dados.length > 0) {
+      for(let contar =0; contar<dados.length; contar++) {
+
+         criar("iniciar", dados[contar].titulo,dados[contar].conteudo,dados[contar].data, dados[contar].horario, dados[contar].ident)
+      }
+   } else {
+      console.log("Não foi necessário usar a função iniciar(): ", + dados)
+   }
 }
 
 
