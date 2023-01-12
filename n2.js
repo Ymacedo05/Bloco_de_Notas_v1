@@ -3,15 +3,12 @@ let dados = []
 let btnAdd = document.getElementById("btn")
 btnAdd.addEventListener("click", abrirModal)
 
-
+/*
 
 function iniciar() {
-   let especial = recuperarStorage()
-    
+   dados = recuperarStorage()
    
-   if(especial.length > 0) {
-      dados = especial
-      
+   if(dados.length > 0) {
       for(let c =0; c<dados.length; c++) {
 
          criar("iniciar", dados[c].titulo,dados[c].conteudo,dados[c].data, dados[c].horario, dados[c].ident)
@@ -25,7 +22,7 @@ function iniciar() {
 
 iniciar()
 
-
+*/
 
 
 function abrirModal(){
