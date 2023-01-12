@@ -8,11 +8,13 @@ btnAdd.addEventListener("click", abrirModal)
 function iniciar() {
    dados = recuperarStorage()
    
+   if(dados.length > 0) {
+      for(let c =0; c<dados.length; c++) {
 
-
-   for(let c =0; c<dados.length; c++) {
-
-      criar("iniciar", dados[c].titulo,dados[c].conteudo,dados[c].data, dados[c].horario, dados[c].ident)
+         criar("iniciar", dados[c].titulo,dados[c].conteudo,dados[c].data, dados[c].horario, dados[c].ident)
+      }
+   } else {
+      console.log("Não foi necessário usar a função iniciar(): ", + dados)
    }
    
    
