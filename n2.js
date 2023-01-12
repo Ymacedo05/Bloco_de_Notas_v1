@@ -6,9 +6,12 @@ btnAdd.addEventListener("click", abrirModal)
 
 
 function iniciar() {
-   dados = recuperarStorage()
+   let especial = recuperarStorage()
+    
    
-   if(dados.length > 0) {
+   if(especial.length > 0) {
+      dados = especial
+      
       for(let c =0; c<dados.length; c++) {
 
          criar("iniciar", dados[c].titulo,dados[c].conteudo,dados[c].data, dados[c].horario, dados[c].ident)
