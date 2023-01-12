@@ -24,6 +24,13 @@ iniciar()
 
 */
 
+function staart(n) {
+   dados = recuperarStorage()
+   console.log(dados)
+}
+
+
+staart(dados)
 
 function abrirModal(){
    let modal = document.getElementById("modal-prot") 
