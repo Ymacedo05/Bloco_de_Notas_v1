@@ -64,7 +64,7 @@ main {
     margin-bottom: 13px;
     flex-wrap: wrap;
     text-align: center;
-    min-height: 66vh;
+    min-height: 70vh;
     
 }
 
@@ -269,7 +269,7 @@ main .modal #salvar {
     top: 7px;
     left: 10px;
     transform: rotate(90deg);
-
+    border: 0px;
 }
 
 main .modal #editar {
@@ -289,8 +289,7 @@ main .modal #fechar {
 
 footer{
     background-color: black;
-    height: 13vh;
-    min-height: 120px;
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -298,6 +297,8 @@ footer{
 
 footer p{
     color: gray;
+    padding: 0px 15px;
+    text-align: center;
 }
 
 @media(max-width:600px) {
@@ -305,6 +306,7 @@ footer p{
         display: flex;
         flex-direction: column ;
         align-items: center;
+        justify-content: flex-start;
         margin-top: 13px;  
     }
     main div.nota{

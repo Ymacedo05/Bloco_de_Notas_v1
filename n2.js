@@ -117,6 +117,7 @@ function criar(modo,titulo,conteudo,dat=0,hor=0, idd=0) {
          ident ++
          div.id = ident
          op1.addEventListener("click", ()=> excluir(div.id))
+         op2.addEventListener("click", ()=> editar(div.id))
       
       
          fecharModal()
