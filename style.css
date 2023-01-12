@@ -46,7 +46,7 @@ header{
     align-items: center;
     background-color: black;
     height: 13vh;
-    min-height: 50px;
+    min-height: 80px;
     width: 100%;
 }
 header h3{
