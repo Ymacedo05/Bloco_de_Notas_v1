@@ -277,6 +277,7 @@ main .modal #editar {
     left: 10px;
     transform: rotate(90deg);
     display: none;
+    border: 0px;
 
 }
 
